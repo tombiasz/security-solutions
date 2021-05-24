@@ -1,0 +1,15 @@
+version: '3.2'
+services:
+  app:
+    command: npm run-script start-dev
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - published: ${APP_PORT:-8000}
+        target: 8000
+    volumes:
+      - .:/app
+      - node_modules:/app/node_modules
+volumes:
+  node_modules:
